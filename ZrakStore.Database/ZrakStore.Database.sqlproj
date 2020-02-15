@@ -73,5 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\SeedRoles.sql" />
+    <None Include="ZrakStore.Database.publish.xml" />
   </ItemGroup>
 </Project>
