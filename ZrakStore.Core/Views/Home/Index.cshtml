@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div>
+    <h1 class="display-4 text-center">Welcome to ZrakStore</h1>
+    <p>ZrakStore is simple Web API made for fun and studying purposes.</p>
+    <p>
+        In order to use API you need user account.
+        If you don't have account you can create it <a asp-controller="User" asp-action="Create">here</a>.
+    </p>
+    <p>ZrakStore API uses JWT (Json Web Token) authentication.</p>
+    <p>To obtain auth token send POST request to /api/token with your credentials in form of Json object.</p>
+    <p>For example, using cUrl (on Windows):</p>
+    <pre class="text-info">
+        curl --header "Content-Type: application/json" --request POST --data {'username':'your_username','password':'your_password'} -k http://zrakstore.azurewebsites.net/api/token
+    </pre>
+    <p>Server will generate JWT and send it back to your client app.</p>
+    <p>Save the token (this depends on the client app you are using to send your API calls) and attach it to any future API calls that require authorization.</p>
+</div>
