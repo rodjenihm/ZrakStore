@@ -34,7 +34,7 @@ namespace ZrakStore.Core
             var jwtConfigSection = Configuration.GetSection("JwtConfig");
             services.Configure<JwtConfig>(jwtConfigSection);
 
-            var connectionString = new DapperConnectionString(Configuration.GetConnectionString("GearHostAuthDb"));
+            var connectionString = new DapperConnectionString(Configuration.GetConnectionString("AuthDb"));
             services.AddSingleton(connectionString);
 
             services.AddScoped<IAsyncUserRepository, MSSQLServerUserRepository>();
