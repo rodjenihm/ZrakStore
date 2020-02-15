@@ -7,6 +7,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ZrakStore.Database", "ZrakS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakStore.Data", "ZrakStore.Data\ZrakStore.Data.csproj", "{DC909BD4-5230-4514-8C23-D205A9258334}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakStore.Services", "ZrakStore.Services\ZrakStore.Services.csproj", "{9097F1A9-9282-48AA-8641-0C96B800B0F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{DC909BD4-5230-4514-8C23-D205A9258334}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC909BD4-5230-4514-8C23-D205A9258334}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC909BD4-5230-4514-8C23-D205A9258334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9097F1A9-9282-48AA-8641-0C96B800B0F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9097F1A9-9282-48AA-8641-0C96B800B0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9097F1A9-9282-48AA-8641-0C96B800B0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9097F1A9-9282-48AA-8641-0C96B800B0F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
