@@ -11,9 +11,9 @@ namespace ZrakStore.Data.Repositories
 {
     public class MSSQLServerUserRepository : IAsyncUserRepository
     {
-        private readonly ConnectionString connectionString;
+        private readonly DapperConnectionString connectionString;
 
-        public MSSQLServerUserRepository(ConnectionString connectionString)
+        public MSSQLServerUserRepository(DapperConnectionString connectionString)
         {
             this.connectionString = connectionString;
         }
