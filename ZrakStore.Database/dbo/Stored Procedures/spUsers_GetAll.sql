@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE [dbo].[spUsers_GetAll]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM [dbo].[Users];
+END

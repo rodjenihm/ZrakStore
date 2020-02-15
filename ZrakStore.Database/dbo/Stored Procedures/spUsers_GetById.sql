@@ -1,0 +1,8 @@
+﻿CREATE PROCEDURE [dbo].[spUsers_GetById]
+	@Id NVARCHAR (450)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM [dbo].[Users]
+	WHERE Id = @Id;
+END
