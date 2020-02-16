@@ -17,26 +17,26 @@ namespace ZrakStore.Auth.TokenServer.Controllers
     [ApiController]
     public class TokenController : ControllerBase
     {
-        private readonly IWebService webService;
+        private readonly IUserService userService;
         private readonly IPasswordHasher passwordHasher;
         private readonly JwtConfig jwtConfig;
 
-        public TokenController(IWebService webService, IPasswordHasher passwordHasher, IOptions<JwtConfig> jwtConfig)
+        public TokenController(IUserService userService, IPasswordHasher passwordHasher, IOptions<JwtConfig> jwtConfig)
         {
-            this.webService = webService;
+            this.userService = userService;
             this.passwordHasher = passwordHasher;
             this.jwtConfig = jwtConfig.Value;
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(LoginCredentials credentials)
+        public async Task<ActionResult> Post(LoginViewModel model)
         {
-            var user = await webService.GetUserByUsernameAsync(credentials.Username);
+            var user = await userService.GetUserByUsernameAsync(model.Username);
 
             if (user == null)
                 return BadRequest(new { message = "Username is incorrect" });
 
-            if (!passwordHasher.VerifyHashedPassword(credentials.Password, user.PasswordHash))
+            if (!passwordHasher.VerifyHashedPassword(model.Password, user.PasswordHash))
                 return BadRequest(new { message = "Password is incorrect" });
 
             var tokenHandler = new JwtSecurityTokenHandler();
