@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ZrakStore.Core.Config;
 using ZrakStore.Core.Models;
-using ZrakStore.Data.Utilities;
 using ZrakStore.Services;
 
 namespace ZrakStore.Auth.TokenServer.Controllers

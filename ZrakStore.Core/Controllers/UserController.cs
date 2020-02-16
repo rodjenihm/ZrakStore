@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using ZrakStore.Core.Models;
 using ZrakStore.Data.Entities;
 using ZrakStore.Services;
-using ZrakStore.Core.Models;
 
 namespace ZrakStore.WebApp.Controllers
 {
