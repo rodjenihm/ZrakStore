@@ -45,12 +45,13 @@ namespace ZrakStore.Auth.TokenServer.Controllers
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim("username", user.Username),
-                    new Claim(ClaimTypes.Role, "User")
+                    new Claim(ClaimTypes.Role, "User"),
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = jwtConfig.Issuer
             };
+
             var securityToken = tokenHandler.CreateToken(tokenDescriptor);
             var jwt = tokenHandler.WriteToken(securityToken);
 

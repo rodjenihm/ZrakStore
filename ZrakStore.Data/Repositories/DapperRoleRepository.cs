@@ -24,11 +24,9 @@ namespace ZrakStore.Data.Repositories
 
         public async Task AddToRoleAsync(string userId, string roleId)
         {
-            var sql = "INSERT INTO UserRoles (UserId, RoleId) VALUES (@UserId, @RoleId);";
-
             using (var dbConnection = new SqlConnection(connectionString.Value))
             {
-                var affectedRows = await dbConnection.ExecuteAsync(sql, new { UserId = userId, RoleId = roleId });
+                var affectedRows = await dbConnection.ExecuteAsync("spUserRoles_Add @UserId, @RoleId", new { UserId = userId, RoleId = roleId });
             }
         }
 

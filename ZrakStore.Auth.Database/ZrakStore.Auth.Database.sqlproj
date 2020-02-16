@@ -73,6 +73,7 @@
     <Build Include="dbo\Stored Procedures\spUsers_GetByUsername.sql" />
     <Build Include="dbo\Stored Procedures\spUsers_Add.sql" />
     <Build Include="dbo\Stored Procedures\spUsers_Count.sql" />
+    <Build Include="dbo\Stored Procedures\spUserRoles_Add.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\SeedRoles.sql" />

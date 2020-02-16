@@ -21,7 +21,7 @@ namespace ZrakStore.WebApp.Controllers
             this.passwordHasher = passwordHasher;
         }
 
-        //[Authorize(Roles = "User, Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> All()
         {
             var users = await userService.GetAllUsersAsync();
@@ -52,6 +52,7 @@ namespace ZrakStore.WebApp.Controllers
 
             await userService.AddUserAsync(newUser);
             await roleService.AddUserToRoleAsync(newUser, RoleType.User);
+
             return View("Summary", $"API User '{model.Username}' successfully created.");
         }
     }
