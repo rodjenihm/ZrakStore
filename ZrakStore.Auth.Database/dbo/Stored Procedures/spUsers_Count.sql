@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE [dbo].[spUsers_Count]
+AS
+BEGIN
+	SELECT COUNT(*) FROM Users;
+END

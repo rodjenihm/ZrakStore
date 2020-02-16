@@ -21,7 +21,7 @@ namespace ZrakStore.WebApp.Controllers
             this.passwordHasher = passwordHasher;
         }
 
-        [Authorize(Roles = "User, Admin")]
+        //[Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> All()
         {
             var users = await userService.GetAllUsersAsync();

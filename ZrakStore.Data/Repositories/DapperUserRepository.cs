@@ -20,21 +20,17 @@ namespace ZrakStore.Data.Repositories
 
         public async Task AddAsync(User user)
         {
-            var sql = "INSERT INTO Users (Id, CreatedAt, UserName, PasswordHash) VALUES (@Id, @CreatedAt, @UserName, @PasswordHash);";
-
             using (var dbConnection = new SqlConnection(connectionString.Value))
             {
-                var affectedRows = await dbConnection.ExecuteAsync(sql, user);
+                var affectedRows = await dbConnection.ExecuteAsync("spUsers_Add @Id, @Username, @PasswordHash", user);
             }
         }
 
         public async Task<int> CountAsync()
         {
-            var sql = "SELECT COUNT(*) FROM Users;";
-
             using (var dbConnection = new SqlConnection(connectionString.Value))
             {
-                var count = await dbConnection.ExecuteScalarAsync<int>(sql);
+                var count = await dbConnection.ExecuteScalarAsync<int>("spUsers_Count");
                 return count;
             }
         }
