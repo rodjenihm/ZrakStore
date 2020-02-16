@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ZrakStore.Data.Entities.User>
+@{
+    ViewData["Title"] = "Users";
+}
+
+@if (@Model != null)
+{
+    @if (@Model.Any())
+    {
+        <table class="table table-sm my-2">
+            <thead class="bg-primary">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password Hash</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr class="table-active">
+                        <th scope="row">@user.Id</th>
+                        <td>@user.CreatedAt</td>
+                        <td>@user.Username</td>
+                        <td>@user.PasswordHash</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h2 class="text-center">There are no registered API Users</h2>
+    }
+}
