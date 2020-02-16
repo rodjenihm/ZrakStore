@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ZrakStore.Database", "ZrakStore.Database\ZrakStore.Database.sqlproj", "{4D973271-EAA8-4B93-8988-F9F4F6C20A80}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ZrakStore.Auth.Database", "ZrakStore.Auth.Database\ZrakStore.Auth.Database.sqlproj", "{4D973271-EAA8-4B93-8988-F9F4F6C20A80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakStore.Data", "ZrakStore.Data\ZrakStore.Data.csproj", "{DC909BD4-5230-4514-8C23-D205A9258334}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZrakStore.Data", "ZrakStore.Data\ZrakStore.Data.csproj", "{DC909BD4-5230-4514-8C23-D205A9258334}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakStore.Services", "ZrakStore.Services\ZrakStore.Services.csproj", "{9097F1A9-9282-48AA-8641-0C96B800B0F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZrakStore.Services", "ZrakStore.Services\ZrakStore.Services.csproj", "{9097F1A9-9282-48AA-8641-0C96B800B0F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakStore.Core", "ZrakStore.Core\ZrakStore.Core.csproj", "{EEB874FE-CD79-4F7C-AF8F-2B3567761130}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZrakStore.Core", "ZrakStore.Core\ZrakStore.Core.csproj", "{EEB874FE-CD79-4F7C-AF8F-2B3567761130}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
