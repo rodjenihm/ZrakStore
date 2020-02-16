@@ -10,20 +10,20 @@
         <table class="table table-sm my-2">
             <thead class="bg-primary">
                 <tr>
-                    <th scope="col">Id</th>
+                    <th class="d-none d-xl-block" scope="col">Id</th>
                     <th scope="col">Created At</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Password Hash</th>
+                    <th class="d-none d-lg-block" scope="col">Password Hash</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var user in Model)
                 {
                     <tr class="table-active">
-                        <th scope="row">@user.Id</th>
+                        <th class="d-none d-xl-block" scope="row">@user.Id</th>
                         <td>@user.CreatedAt</td>
                         <td>@user.Username</td>
-                        <td>@user.PasswordHash</td>
+                        <td class="d-none d-lg-block">@user.PasswordHash</td>
                     </tr>
                 }
             </tbody>

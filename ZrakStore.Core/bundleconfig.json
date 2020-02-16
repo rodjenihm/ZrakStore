@@ -4,5 +4,11 @@
     "inputFiles": [
       "wwwroot/css/site.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap/css/bootstrap.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/css/bootstrap.css"
+    ]
   }
 ]

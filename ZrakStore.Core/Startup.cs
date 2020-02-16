@@ -39,8 +39,9 @@ namespace ZrakStore.Core
             services.AddSingleton(connectionString);
 
             services.AddScoped<IAsyncUserRepository, DapperUserRepository>();
+            services.AddScoped<IAsyncRoleRepository, DapperRoleRepository>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
-            services.AddScoped<IUserService, WebService>();
+            services.AddScoped<IWebService, WebService>();
 
             var appSettings = jwtConfigSection.Get<JwtConfig>();
             var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);

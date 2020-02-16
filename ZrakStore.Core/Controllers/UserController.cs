@@ -10,19 +10,19 @@ namespace ZrakStore.WebApp.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUserService userService;
+        private readonly IWebService webService;
         private readonly IPasswordHasher passwordHasher;
 
-        public UserController(IUserService userService, IPasswordHasher passwordHasher)
+        public UserController(IWebService webService, IPasswordHasher passwordHasher)
         {
-            this.userService = userService;
+            this.webService = webService;
             this.passwordHasher = passwordHasher;
         }
 
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")]
         public async Task<IActionResult> All()
         {
-            var users = await userService.GetAllUsersAsync();
+            var users = await webService.GetAllUsersAsync();
             return View(users);
         }
 
@@ -35,7 +35,7 @@ namespace ZrakStore.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserViewModel model)
         {
-            if (await userService.GetUserByUsernameAsync(model.Username) != null)
+            if (await webService.GetUserByUsernameAsync(model.Username) != null)
             {
                 return View("Summary", $"Username '{model.Username}' is already taken.");
             }
@@ -48,7 +48,8 @@ namespace ZrakStore.WebApp.Controllers
                 PasswordHash = passwordHasher.HashPassword(model.Password)
             };
 
-            await userService.AddUserAsync(newUser);
+            await webService.AddUserAsync(newUser);
+            await webService.AddUserToRoleAsync(newUser, RoleType.User);
             return View("Summary", $"API User '{model.Username}' successfully created.");
         }
     }
