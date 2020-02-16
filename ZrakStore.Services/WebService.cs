@@ -5,13 +5,15 @@ using ZrakStore.Data.Repositories;
 
 namespace ZrakStore.Services
 {
-    public class UserService : IUserService
+    public class WebService : IUserService, IRoleService
     {
         private readonly IAsyncUserRepository userRepository;
+        private readonly IAsyncRoleRepository roleRepository;
 
-        public UserService(IAsyncUserRepository userRepository)
+        public WebService(IAsyncUserRepository userRepository, IAsyncRoleRepository roleRepository)
         {
             this.userRepository = userRepository;
+            this.roleRepository = roleRepository;
         }
 
         public async Task AddUserAsync(User user)
@@ -32,6 +34,11 @@ namespace ZrakStore.Services
         public async Task<User> GetUserByIdAsync(string id)
         {
             return await userRepository.GetByIdAsync(id);
+        }
+
+        public async Task AddUserToRoleAsync(User user, RoleType role)
+        {
+            await roleRepository.AddToRoleAsync(user.Id, role.ToString());
         }
     }
 }

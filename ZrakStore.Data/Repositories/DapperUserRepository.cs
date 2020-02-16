@@ -9,11 +9,11 @@ using ZrakStore.Data.Utilities;
 
 namespace ZrakStore.Data.Repositories
 {
-    public class MSSQLServerUserRepository : IAsyncUserRepository
+    public class DapperUserRepository : IAsyncUserRepository
     {
         private readonly DapperConnectionString connectionString;
 
-        public MSSQLServerUserRepository(DapperConnectionString connectionString)
+        public DapperUserRepository(DapperConnectionString connectionString)
         {
             this.connectionString = connectionString;
         }

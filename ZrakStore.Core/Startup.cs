@@ -38,9 +38,9 @@ namespace ZrakStore.Core
             var connectionString = new DapperConnectionString(Configuration.GetConnectionString("AuthDb"));
             services.AddSingleton(connectionString);
 
-            services.AddScoped<IAsyncUserRepository, MSSQLServerUserRepository>();
+            services.AddScoped<IAsyncUserRepository, DapperUserRepository>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserService, WebService>();
 
             var appSettings = jwtConfigSection.Get<JwtConfig>();
             var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);
