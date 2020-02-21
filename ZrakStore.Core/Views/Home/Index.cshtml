@@ -16,6 +16,11 @@
     <pre class="text-info">
         curl --header "Content-Type: application/json" --request POST --data {'username':'your_username','password':'your_password'} -k @tokenEndpoint
     </pre>
+    <p>Or using Postman:</p>
+    <img src="~/images/PostmanSendReq.JPG" class="img-fluid">
+    <br /> <br />
     <p>Server will generate JWT and send it back to your client app.</p>
+    <img src="~/images/PostmanJwtRes.JPG" class="img-fluid">
+    <br /> <br />
     <p>Save the token (this depends on the client app you are using to send your API calls) and attach it to any future API calls that require authorization.</p>
 </div>
