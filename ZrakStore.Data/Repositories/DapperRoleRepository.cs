@@ -17,7 +17,7 @@ namespace ZrakStore.Data.Repositories
             this.connectionString = connectionString;
         }
 
-        public Task AddAsync(Role t)
+        public Task AddAsync(Role role)
         {
             throw new NotImplementedException();
         }
@@ -27,6 +27,15 @@ namespace ZrakStore.Data.Repositories
             using (var dbConnection = new SqlConnection(connectionString.Value))
             {
                 var affectedRows = await dbConnection.ExecuteAsync("spUserRoles_Add @UserId, @RoleId", new { UserId = userId, RoleId = roleId });
+            }
+        }
+
+        public async Task<IEnumerable<string>> GetRolesByUsernameAsync(string username)
+        {
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                var roles = await dbConnection.QueryAsync<string>("spGetRolesByUsername @Username", new { Username = username });
+                return roles;
             }
         }
 

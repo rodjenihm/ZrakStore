@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using System.Net;
 using System.Text;
 using ZrakStore.Core.Config;
 using ZrakStore.Data.Repositories;
@@ -44,26 +42,34 @@ namespace ZrakStore.Core
 
             var appSettings = jwtConfigSection.Get<JwtConfig>();
             var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);
-            services.AddAuthentication(configureOptions =>
-            {
-                configureOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                configureOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(configureOptions =>
-            {
-                configureOptions.RequireHttpsMetadata = false;
-                configureOptions.SaveToken = true;
-                configureOptions.TokenValidationParameters = new TokenValidationParameters
+            //services.AddAuthentication(configureOptions =>
+            //{
+            //    configureOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    configureOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+            //.AddJwtBearer(configureOptions =>
+            //{
+            //    configureOptions.RequireHttpsMetadata = false;
+            //    configureOptions.SaveToken = true;
+            //    configureOptions.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuerSigningKey = true,
+            //        ValidateIssuer = true,
+            //        ValidateAudience = true,
+            //        ValidateLifetime = true,
+            //        ValidIssuer = appSettings.Issuer,
+            //        ValidAudience = appSettings.Audience,
+            //        IssuerSigningKey = new SymmetricSecurityKey(key),
+            //    };
+            //});
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(configureOptions =>
                 {
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidIssuer = appSettings.Issuer,
-                    ValidAudience = appSettings.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                };
-            });
+                    configureOptions.Cookie.Name = "Cookie.Zrak";
+                    configureOptions.LoginPath = "/User/Login";
+                    configureOptions.AccessDeniedPath = "/Home/AccessDenied";
+                });
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -90,15 +96,21 @@ namespace ZrakStore.Core
 
             app.UseAuthentication();
 
-            app.UseStatusCodePages(async context =>
-            {
-                var response = context.HttpContext.Response;
+            //app.UseStatusCodePages(async context =>
+            //{
+            //    var response = context.HttpContext.Response;
 
-                if (response.StatusCode == (int)HttpStatusCode.Unauthorized)
-                {
-                    response.Redirect("/Home/NotAllow");
-                }
-            });
+            //    if (response.StatusCode == (int)HttpStatusCode.Unauthorized)
+            //    {
+            //        response.Redirect("/User/Login");
+            //    }
+
+            //    if (response.StatusCode == (int)HttpStatusCode.Forbidden)
+            //    {
+            //        response.Redirect("/Home/NotAuthorized");
+            //    }
+
+            //});
 
             app.UseMvc(routes =>
             {

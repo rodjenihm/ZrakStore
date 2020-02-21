@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ZrakStore.Data.Entities;
 using ZrakStore.Data.Repositories;
 
@@ -17,6 +18,11 @@ namespace ZrakStore.Services
         {
             var roleLevel = (int)role;
             await roleRepository.AddToRoleAsync(user.Id, roleLevel.ToString());
+        }
+
+        public Task<IEnumerable<string>> GetUserRolesAsync(User user)
+        {
+            return roleRepository.GetRolesByUsernameAsync(user.Username);
         }
     }
 }
