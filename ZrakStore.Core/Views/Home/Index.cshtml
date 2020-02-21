@@ -11,7 +11,7 @@
         If you don't have account you can create it <a asp-controller="User" asp-action="Create">here</a>.
     </p>
     <p>ZrakStore API uses JWT (Json Web Token) authentication.</p>
-    <p>To obtain auth token send POST request to @tokenEndpoint with your credentials in form of Json object.</p>
+    <p>To obtain auth token send POST request to <i class="text-success">@tokenEndpoint</i> with your credentials in form of Json object.</p>
     <p>For example, using cUrl (on Windows):</p>
     <pre class="text-info">
         curl --header "Content-Type: application/json" --request POST --data {'username':'your_username','password':'your_password'} -k @tokenEndpoint
