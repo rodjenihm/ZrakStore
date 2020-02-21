@@ -16,8 +16,7 @@ namespace ZrakStore.Services
 
         public async Task AddUserToRoleAsync(User user, RoleType role)
         {
-            var roleLevel = (int)role;
-            await roleRepository.AddToRoleAsync(user.Id, roleLevel.ToString());
+            await roleRepository.AddToRoleAsync(user.Id, role.ToString());
         }
 
         public Task<IEnumerable<string>> GetUserRolesAsync(User user)
