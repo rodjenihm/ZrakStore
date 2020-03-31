@@ -30,7 +30,7 @@ namespace ZrakStore.WebApp.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> All()
         {
             var users = await userService.GetAllUsersAsync();
@@ -46,6 +46,11 @@ namespace ZrakStore.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             if (await userService.GetUserByUsernameAsync(model.Username) != null)
             {
                 return View(nameof(Summary), $"Username '{model.Username}' is already taken.");
@@ -93,6 +98,11 @@ namespace ZrakStore.WebApp.Controllers
             //        return View("Summary", message);
             //    }
             //}
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
 
             var user = await userService.GetUserByUsernameAsync(model.Username);
 

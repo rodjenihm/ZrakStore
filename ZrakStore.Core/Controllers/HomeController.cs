@@ -17,7 +17,7 @@ namespace ZrakStore.Core.Controllers
             return View();
         }
 
-        public IActionResult NotAuthorized()
+        public IActionResult AccessDenied()
         {
             return View();
         }

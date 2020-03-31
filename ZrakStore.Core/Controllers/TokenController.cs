@@ -32,6 +32,11 @@ namespace ZrakStore.Auth.TokenServer.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(LoginViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             var user = await userService.GetUserByUsernameAsync(model.Username);
 
             if (user == null)
